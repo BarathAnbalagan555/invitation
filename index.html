@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barath ❤️ Abirami — Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating Hearts Background -->
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <span class="sun">☀️</span>
+    <span class="moon">🌙</span>
+  </button>
+
+  <!-- Music Toggle -->
+  <!-- <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+    </svg>
+    <span class="music-label">♪</span>
+  </button> -->
+
+  <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="petal" style="--d:0s;--x:10%;--s:1.2"></div>
+      <div class="petal" style="--d:2s;--x:25%;--s:0.8"></div>
+      <div class="petal" style="--d:4s;--x:45%;--s:1.5"></div>
+      <div class="petal" style="--d:1s;--x:65%;--s:0.9"></div>
+      <div class="petal" style="--d:3s;--x:80%;--s:1.1"></div>
+      <div class="petal" style="--d:5s;--x:90%;--s:0.7"></div>
+    </div>
+
+    <div class="hero-content reveal">
+      <p class="hero-pre">— A Sacred Union —</p>
+
+      <!-- Stacked names: Barath / ❤ / Abirami -->
+      <div class="hero-names-stack">
+        <span class="name-groom">Barath</span>
+        <span class="heart-icon">❤</span>
+        <span class="name-bride">Abirami</span>
+      </div>
+
+      <p class="hero-tagline">With warm hearts and family blessings,<br>we invite you to celebrate our wedding day</p>
+      <div class="hero-date-badge">18 · 05 · 2026</div>
+
+      <!-- Countdown -->
+      <div class="countdown" id="countdown">
+        <div class="count-item"><span id="days">00</span><label>Days</label></div>
+        <div class="count-sep">·</div>
+        <div class="count-item"><span id="hours">00</span><label>Hours</label></div>
+        <!-- <div class="count-sep">·</div> -->
+        <!-- <div class="count-item"><span id="minutes">00</span><label>Minutes</label></div>
+        <div class="count-sep">·</div>
+        <div class="count-item"><span id="seconds">00</span><label>Seconds</label></div> -->
+      </div>
+
+      <a href="#wedding" class="btn-primary save-date-btn">
+        <span>Save the Date</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ DIVIDER ══════════════════════════════ -->
+  <div class="ornament-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="20" x2="240" y2="20" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+      <path d="M270 10 Q285 20 300 10 Q315 0 330 10 Q315 20 300 30 Q285 20 270 10z" fill="currentColor" opacity="0.6"/>
+      <line x1="360" y1="20" x2="600" y2="20" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- ══════════════════════════════ PROFILES ══════════════════════════════ -->
+  <section class="profiles" id="profiles">
+    <div class="section-label reveal">— The Couple —</div>
+
+    <div class="profiles-grid">
+      <!-- Groom -->
+      <div class="profile-card reveal" style="--delay: 0.1s">
+        <div class="profile-photo groom-photo">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="30" r="18" fill="currentColor" opacity="0.2"/>
+              <path d="M10 75c0-16.6 13.4-30 30-30s30 13.4 30 30" fill="currentColor" opacity="0.15"/>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-badge">Groom</div>
+        <h2 class="profile-name">A. Barath</h2>
+        <div class="profile-details">
+          <div class="detail-row">
+            <span class="detail-icon">🎓</span>
+            <span>B.Sc (Computer Science)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">💼</span>
+            <span>Senior Software Engineer<br><em>GodB Tech, Chennai</em></span>
+          </div>
+          <div class="profile-parents">
+            <div class="parent-row">
+              <span class="parent-label">Father</span>
+              <span class="parent-name">T. Anbalagan</span>
+            </div>
+            <div class="parent-row">
+              <span class="parent-label">Mother</span>
+              <span class="parent-name">A. Renuga</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Heart Center -->
+      <div class="profiles-center reveal" style="--delay: 0.2s">
+        <div class="center-heart">❤</div>
+        <p class="center-quote">"Two hearts,<br>one bright journey"</p>
+      </div>
+
+      <!-- Bride -->
+      <div class="profile-card reveal" style="--delay: 0.3s">
+        <div class="profile-photo bride-photo">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="28" r="16" fill="currentColor" opacity="0.2"/>
+              <path d="M32 44 Q36 52 40 52 Q44 52 48 44" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"/>
+              <path d="M10 75c0-16.6 13.4-30 30-30s30 13.4 30 30" fill="currentColor" opacity="0.15"/>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-badge bride-badge">Bride</div>
+        <h2 class="profile-name">P.J. Abirami</h2>
+        <div class="profile-details">
+          <div class="detail-row">
+            <span class="detail-icon">🎓</span>
+            <span>M.Sc (Mathematics)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">✨</span>
+            <span>Academician &amp; Scholar</span>
+          </div>
+          <div class="profile-parents">
+            <div class="parent-row">
+              <span class="parent-label">Father</span>
+              <span class="parent-name">C. Palaniraj</span>
+            </div>
+            <div class="parent-row">
+              <span class="parent-label">Mother</span>
+              <span class="parent-name">P. Jothilakshmi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ DIVIDER ══════════════════════════════ -->
+  <div class="ornament-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="20" x2="240" y2="20" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+      <path d="M270 10 Q285 20 300 10 Q315 0 330 10 Q315 20 300 30 Q285 20 270 10z" fill="currentColor" opacity="0.6"/>
+      <line x1="360" y1="20" x2="600" y2="20" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- ══════════════════════════════ WEDDING DETAILS ══════════════════════════════ -->
+  <section class="wedding" id="wedding">
+    <div class="section-label reveal">— The Celebration —</div>
+    <h2 class="section-title reveal">Wedding Details</h2>
+
+    <div class="wedding-main reveal">
+      <div class="wedding-card">
+        <div class="wc-top">
+          <div class="wc-icon">📅</div>
+          <div class="wc-info">
+            <span class="wc-label">Date</span>
+            <span class="wc-value">Monday, 18 May 2026</span>
+          </div>
+        </div>
+        <div class="wc-top">
+          <div class="wc-icon">⏰</div>
+          <div class="wc-info">
+            <span class="wc-label">Time</span>
+            <span class="wc-value">9:30 AM – 10:30 AM</span>
+            <span class="wc-sub">Muhurtham</span>
+          </div>
+        </div>
+        <div class="wc-top">
+          <div class="wc-icon">📍</div>
+          <div class="wc-info">
+            <span class="wc-label">Venue</span>
+            <span class="wc-value">Thiyagaraja Mahal</span>
+            <span class="wc-sub">Thiruvaiyaru, Tamil Nadu</span>
+          </div>
+        </div>
+        <a href="https://maps.app.goo.gl/g2JLrtP13S8nuQrC8" target="_blank" rel="noopener noreferrer" class="btn-outline map-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          View on Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ GALLERY ══════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="section-label reveal">— Our Story —</div>
+    <h2 class="section-title reveal">Moments Together</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" style="--delay:0.0s">
+        <img class="gallery-photo" src="assets/IMG_20251123_193014.jpg.jpeg" alt="Barath and Abirami portrait" loading="lazy" />
+      </div>
+      <div class="gallery-item tall reveal" style="--delay:0.1s">
+        <img class="gallery-photo" src="assets/IMG_4768.JPG.jpeg" alt="Wedding couple candid moment" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal" style="--delay:0.2s">
+        <img class="gallery-photo" src="assets/IMG_4753.JPG.jpeg" alt="Barath and Abirami smiling together" loading="lazy" />
+      </div>
+      <div class="gallery-item wide reveal" style="--delay:0.3s">
+        <img class="gallery-photo" src="assets/IMG_20260111_121415.jpg.jpeg" alt="Couple photo in natural light" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal" style="--delay:0.4s">
+        <img class="gallery-photo" src="assets/MVIMG_20251123_092842.jpg.jpeg" alt="Memorable moment of the couple" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ INVITATION CARD ══════════════════════════════ -->
+  <section class="invitation-section" id="invitation">
+    <div class="section-label reveal">— Digital Invitation —</div>
+    <h2 class="section-title reveal">The Invitation Card</h2>
+
+    <div class="inv-card-wrapper reveal">
+      <div class="inv-card" id="invCard">
+        <div class="inv-card-inner">
+          <div class="inv-ornament-top">❖ ── ── ── ── ── ❖</div>
+          <p class="inv-with-joy">WITH LOVE AND BLESSINGS</p>
+          <h1 class="inv-names">Barath<span>❤</span>Abirami</h1>
+          <p class="inv-together">We warmly invite you</p>
+          <p class="inv-invite-text">to join us as we begin our new life together</p>
+          <p class="inv-event-title">Wedding Ceremony</p>
+          <div class="inv-details-row">
+            <div class="inv-detail">
+              <span class="inv-d-label">DATE</span>
+              <span class="inv-d-value">18 May 2026</span>
+              <span class="inv-d-sub">Monday</span>
+            </div>
+            <div class="inv-divider-v"></div>
+            <div class="inv-detail">
+              <span class="inv-d-label">TIME</span>
+              <span class="inv-d-value">9:30 – 10:30 AM</span>
+              <span class="inv-d-sub">Muhurtham</span>
+            </div>
+            <div class="inv-divider-v"></div>
+            <div class="inv-detail">
+              <span class="inv-d-label">VENUE</span>
+              <span class="inv-d-value">Thiyagaraja Mahal</span>
+              <span class="inv-d-sub">Thiruvaiyaru</span>
+            </div>
+          </div>
+          <div class="inv-parents-row">
+            <div class="inv-parent-group">
+              <span class="inv-p-title">Groom's Family</span>
+              <span>T. Anbalagan &amp; A. Renuga</span>
+            </div>
+            <div class="inv-parent-group">
+              <span class="inv-p-title">Bride's Family</span>
+              <span>C. Palaniraj &amp; P. Jothilakshmi</span>
+            </div>
+          </div>
+          <div class="inv-ornament-bottom">❖ ── ── ── ── ── ❖</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inv-actions reveal">
+      <button class="btn-primary" id="downloadCard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+        Save as PDF / Print
+      </button>
+      <button class="btn-outline" id="shareCard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share Invitation
+      </button>
+    </div>
+    <p class="inv-print-hint">In the print dialog, choose <strong>"Save as PDF"</strong> to download as a file</p>
+  </section>
+
+  <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-heart">❤</div>
+      <h2 class="footer-msg">We look forward to celebrating together</h2>
+      <p class="footer-sub">Your presence will make our day brighter</p>
+      <div class="footer-names">Barath &amp; Abirami</div>
+      <div class="footer-date">18 · May · 2026</div>
+      <p class="footer-copy">© 2026 Barath ❤ Abirami · Crafted with love</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

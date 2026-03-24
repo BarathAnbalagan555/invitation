@@ -1,0 +1,595 @@
+/* ═══════════════════════════════════════════════════════════════
+   BARATH ❤ ABIRAMI — WEDDING WEBSITE
+   Aesthetic: Refined Luxury · Rose Gold · Cream · Editorial
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── TOKENS ──────────────────────────────────────────────────── */
+:root {
+  --rose:        #d97706;
+  --rose-deep:   #b45309;
+  --rose-light:  #fdba74;
+  --gold:        #c47f00;
+  --gold-light:  #f2c572;
+  --gold-faint:  #f8e2b8;
+  --cream:       #fff8ec;
+  --cream-dark:  #fff0d8;
+  --cream-mid:   #fff4e3;
+  --text:        #2f1c07;
+  --text-muted:  #6a4a1c;
+  --text-faint:  #8d6b36;
+  --card-bg:     #ffffff;
+  --card-border: rgba(196, 127, 0, 0.24);
+  --glass:       rgba(255,255,255,0.85);
+  --border:      rgba(217,119,6,0.24);
+  --shadow:      0 8px 28px rgba(130,76,9,0.12);
+  --shadow-lg:   0 20px 72px rgba(130,76,9,0.18);
+}
+
+[data-theme="dark"] {
+  --cream:       #1a1210;
+  --cream-dark:  #241918;
+  --cream-mid:   #201614;
+  --text:        #f0e8e0;
+  --text-muted:  #c0a090;
+  --text-faint:  #7a6259;
+  --card-bg:     rgba(36,25,24,0.90);
+  --card-border: rgba(193,122,122,0.22);
+  --glass:       rgba(30,20,18,0.80);
+  --border:      rgba(193,122,122,0.25);
+  --shadow:      0 4px 24px rgba(0,0,0,0.35);
+  --shadow-lg:   0 16px 64px rgba(0,0,0,0.50);
+}
+
+/* ── RESET ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ── FLOATING HEARTS ─────────────────────────────────────────── */
+.hearts-bg {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.heart-float {
+  position: absolute; bottom: -60px;
+  font-size: 1rem; opacity: 0;
+  animation: floatHeart linear infinite;
+  user-select: none;
+}
+@keyframes floatHeart {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.15; }
+  90%  { opacity: 0.06; }
+  100% { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+}
+
+/* ── CONTROLS ────────────────────────────────────────────────── */
+.theme-toggle, .music-toggle {
+  position: fixed; z-index: 1000;
+  border: 1.5px solid var(--card-border);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 50%;
+  width: 44px; height: 44px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text); font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+.theme-toggle { top: 20px; right: 20px; }
+.music-toggle { top: 72px; right: 20px; gap: 2px; }
+.music-toggle svg { width: 18px; }
+.music-toggle .music-label { font-size: 0.6rem; color: var(--rose); }
+.theme-toggle:hover, .music-toggle:hover { transform: scale(1.1); border-color: var(--rose); }
+[data-theme="light"] .moon { display: none; }
+[data-theme="dark"]  .sun  { display: none; }
+.music-toggle.playing { border-color: var(--rose); color: var(--rose); }
+
+/* ── SCROLL REVEAL ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
+  transition-delay: var(--delay, 0s);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── ORNAMENT DIVIDER ────────────────────────────────────────── */
+.ornament-divider {
+  max-width: 600px; margin: 0 auto; padding: 0 40px;
+  color: var(--rose);
+  display: flex; align-items: center; justify-content: center;
+}
+.ornament-divider svg { width: 100%; height: 40px; }
+
+/* ── SECTION SHARED ──────────────────────────────────────────── */
+.section-label {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--rose); margin-bottom: 10px;
+}
+.section-title {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 300;
+  color: var(--text); margin-bottom: 56px; line-height: 1.2;
+}
+
+/* ── BUTTONS ─────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 30px;
+  background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+  color: #fff; border: none; border-radius: 60px;
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 18px rgba(138,63,63,0.32);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(138,63,63,0.42); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 26px; background: transparent;
+  color: var(--rose); border: 1.5px solid var(--rose); border-radius: 60px;
+  font-family: 'Cinzel', serif; font-size: 0.7rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover { background: var(--rose); color: #fff; transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 100px 24px 80px;
+  background: linear-gradient(168deg, var(--cream) 0%, var(--cream-dark) 55%, rgba(176,92,92,0.10) 100%);
+  overflow: hidden; z-index: 1;
+}
+
+/* Petals */
+.hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.petal {
+  position: absolute; top: -40px; left: var(--x);
+  width: 12px; height: 16px;
+  background: radial-gradient(ellipse at center, var(--rose-light), transparent);
+  border-radius: 50% 10% 50% 10%;
+  opacity: 0.45; animation: petalFall 12s ease-in infinite;
+  animation-delay: var(--d); transform: scale(var(--s)) rotate(-30deg);
+}
+@keyframes petalFall {
+  0%   { top: -40px; transform: scale(var(--s)) rotate(-30deg) translateX(0); opacity: 0.55; }
+  50%  { transform: scale(var(--s)) rotate(20deg) translateX(40px); }
+  100% { top: 110%; transform: scale(var(--s)) rotate(-10deg) translateX(-30px); opacity: 0; }
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; max-width: 700px;
+}
+
+.hero-pre {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  opacity: 0.9;
+}
+
+/* ── STACKED NAMES ── */
+.hero-names-stack {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+  margin-bottom: 28px;
+}
+.name-groom, .name-bride {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 11vw, 6.8rem);
+  font-weight: 300; line-height: 1;
+  color: var(--text);
+  display: block;
+  letter-spacing: 0.02em;
+}
+[data-theme="light"] .name-groom,
+[data-theme="light"] .name-bride {
+  color: #1e1410;
+}
+.heart-icon {
+  font-family: serif;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  color: var(--rose);
+  line-height: 1.4;
+  display: block;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  14% { transform: scale(1.32); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.20); }
+  56% { transform: scale(1); }
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.8vw, 1.28rem);
+  color: var(--text-muted); margin-bottom: 28px; line-height: 1.9;
+}
+[data-theme="light"] .hero-tagline { color: #5a4238; }
+
+.hero-date-badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.32em;
+  color: var(--gold); border: 1px solid var(--gold-faint);
+  padding: 8px 28px; border-radius: 60px; margin-bottom: 44px;
+  background: rgba(160,120,56,0.06);
+}
+
+/* Countdown */
+.countdown {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap; margin-bottom: 44px;
+}
+.count-item {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 12px; padding: 14px 20px; min-width: 72px;
+  box-shadow: var(--shadow);
+}
+[data-theme="light"] .count-item {
+  background: #ffffff;
+  border-color: rgba(160,120,56,0.22);
+}
+.count-item span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 600;
+  color: var(--rose-deep); line-height: 1;
+}
+[data-theme="light"] .count-item span { color: #8a3f3f; }
+.count-item label {
+  font-family: 'Cinzel', serif; font-size: 0.52rem;
+  letter-spacing: 0.18em; color: var(--text-faint);
+  text-transform: uppercase; margin-top: 4px;
+}
+[data-theme="light"] .count-item label { color: #9a8070; }
+.count-sep { font-size: 1.4rem; color: var(--rose-light); line-height: 1; margin-top: -8px; }
+
+.save-date-btn svg { width: 16px; }
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--text-faint);
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--rose), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+/* ═══════════════════════════════════════════════════════════════
+   PROFILES
+   ═══════════════════════════════════════════════════════════════ */
+.profiles {
+  padding: 72px 24px 96px;
+  background: var(--cream); position: relative; z-index: 1;
+}
+.profiles-grid {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 28px; align-items: start;
+}
+.profile-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 20px; padding: 36px 28px;
+  box-shadow: var(--shadow); text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+[data-theme="light"] .profile-card {
+  background: #ffffff;
+  border-color: rgba(160,120,56,0.18);
+}
+.profile-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+.profile-photo {
+  width: 96px; height: 96px; border-radius: 50%;
+  margin: 0 auto 14px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.groom-photo {
+  background: linear-gradient(135deg, rgba(176,92,92,0.12), rgba(160,120,56,0.12));
+  border: 2px solid rgba(160,120,56,0.28);
+}
+.bride-photo {
+  background: linear-gradient(135deg, rgba(224,176,176,0.18), rgba(176,92,92,0.12));
+  border: 2px solid rgba(176,92,92,0.28);
+}
+.photo-placeholder { width: 76px; height: 76px; color: var(--rose); display: flex; align-items: center; justify-content: center; }
+.photo-placeholder svg { width: 100%; height: 100%; }
+
+.profile-badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(160,120,56,0.35);
+  padding: 4px 14px; border-radius: 20px; margin-bottom: 10px;
+}
+.bride-badge { color: var(--rose); border-color: rgba(176,92,92,0.35); }
+
+.profile-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem; font-weight: 400; color: var(--text); margin-bottom: 18px;
+}
+[data-theme="light"] .profile-name { color: #1e1410; }
+
+.profile-details { text-align: left; }
+.detail-row {
+  display: flex; gap: 10px; align-items: flex-start;
+  margin-bottom: 10px; font-size: 0.875rem; color: var(--text-muted);
+}
+[data-theme="light"] .detail-row { color: #5a4238; }
+.detail-row em { color: var(--rose); font-style: italic; }
+.detail-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+.profile-parents {
+  margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--card-border);
+}
+.parent-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 7px; gap: 8px;
+}
+.parent-label {
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-faint); flex-shrink: 0;
+}
+.parent-name { font-size: 0.875rem; color: var(--text-muted); text-align: right; }
+[data-theme="light"] .parent-name { color: #5a4238; }
+
+/* Center heart */
+.profiles-center {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 14px; gap: 18px;
+}
+.center-heart { font-size: 2.2rem; color: var(--rose); animation: heartbeat 1.5s ease-in-out infinite; }
+.center-quote {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 0.95rem; color: var(--text-faint); text-align: center; line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   WEDDING DETAILS
+   ═══════════════════════════════════════════════════════════════ */
+.wedding {
+  padding: 72px 24px 96px;
+  background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
+  position: relative; z-index: 1;
+}
+.wedding-main { max-width: 520px; margin: 0 auto; }
+.wedding-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 20px; padding: 40px 36px;
+  box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; gap: 26px;
+}
+[data-theme="light"] .wedding-card {
+  background: #ffffff;
+  border-color: rgba(160,120,56,0.2);
+}
+.wc-top { display: flex; gap: 18px; align-items: flex-start; }
+.wc-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 3px; }
+.wc-info { display: flex; flex-direction: column; gap: 2px; }
+.wc-label {
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold);
+}
+.wc-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; color: var(--text); font-weight: 400;
+}
+[data-theme="light"] .wc-value { color: #1e1410; }
+.wc-sub { font-size: 0.84rem; color: var(--text-muted); }
+[data-theme="light"] .wc-sub { color: #5a4238; }
+.map-btn { align-self: center; }
+
+/* ═══════════════════════════════════════════════════════════════
+   GALLERY
+   ═══════════════════════════════════════════════════════════════ */
+.gallery {
+  padding: 72px 24px 96px;
+  background: var(--cream); position: relative; z-index: 1;
+}
+.gallery-grid {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto; gap: 14px;
+}
+.gallery-item {
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--card-border);
+  background: var(--cream-dark);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  min-height: 220px;
+}
+[data-theme="light"] .gallery-item { background: var(--cream-mid); border-color: rgba(160,120,56,0.15); }
+.gallery-item:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-lg); }
+.gallery-item.tall { grid-row: span 2; }
+.gallery-item.wide { grid-column: span 2; }
+.gallery-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover .gallery-photo { transform: scale(1.04); }
+.gallery-placeholder {
+  width: 100%; height: 100%; min-height: 200px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; color: var(--text-faint);
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 20px;
+}
+.gallery-placeholder svg { width: 100%; max-height: 180px; color: var(--rose); }
+
+/* ═══════════════════════════════════════════════════════════════
+   INVITATION CARD
+   ═══════════════════════════════════════════════════════════════ */
+.invitation-section {
+  padding: 72px 24px 96px;
+  background: linear-gradient(158deg, var(--cream-dark) 0%, rgba(176,92,92,0.07) 100%);
+  position: relative; z-index: 1;
+}
+.inv-card-wrapper { max-width: 560px; margin: 0 auto 36px; }
+.inv-card {
+  background: linear-gradient(145deg, #fdf5ee 0%, #f8e9dc 50%, #fdf5ee 100%);
+  border: 1px solid #d4b880;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.8);
+  overflow: hidden; position: relative;
+}
+.inv-card::before {
+  content: ''; position: absolute; inset: 12px;
+  border: 1px solid rgba(160,120,56,0.22); border-radius: 12px; pointer-events: none;
+}
+.inv-card-inner {
+  padding: 48px 40px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+}
+.inv-ornament-top, .inv-ornament-bottom {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.2em;
+  color: #a07838; opacity: 0.65;
+}
+.inv-with-joy {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em;
+  color: #a07838; text-transform: uppercase; margin-top: 4px;
+}
+.inv-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 7.5vw, 3.4rem); font-weight: 300;
+  color: #1e1410; line-height: 1;
+  display: flex; align-items: center; gap: 12px;
+}
+.inv-names span { color: #b05c5c; font-size: 0.78em; }
+.inv-together {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 0.92rem; color: #5a4238;
+}
+.inv-invite-text {
+  font-family: 'Jost', sans-serif; font-size: 0.78rem; color: #9a8070; font-weight: 300; letter-spacing: 0.04em;
+}
+.inv-event-title {
+  font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 0.2em;
+  color: #8a3f3f; text-transform: uppercase; margin: 3px 0;
+}
+.inv-details-row {
+  display: flex; align-items: center; gap: 20px; margin: 10px 0;
+  width: 100%; justify-content: center; flex-wrap: wrap;
+}
+.inv-divider-v {
+  width: 1px; height: 52px;
+  background: linear-gradient(to bottom, transparent, #e0b0b0, transparent);
+}
+.inv-detail { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.inv-d-label {
+  font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.25em; color: #a07838; text-transform: uppercase;
+}
+.inv-d-value {
+  font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: #1e1410;
+}
+.inv-d-sub { font-size: 0.75rem; color: #7a6259; }
+.inv-parents-row {
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+  padding: 14px 0 6px; border-top: 1px solid rgba(160,120,56,0.2);
+  width: 100%; margin-top: 4px;
+}
+.inv-parent-group { display: flex; flex-direction: column; gap: 3px; text-align: center; }
+.inv-p-title {
+  font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.2em;
+  color: #a07838; text-transform: uppercase;
+}
+.inv-parent-group span:last-child { font-size: 0.8rem; color: #7a6259; }
+.inv-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.inv-print-hint {
+  text-align: center; margin-top: 16px;
+  font-size: 0.78rem; color: var(--text-faint);
+  font-family: 'Jost', sans-serif; font-weight: 300;
+}
+[data-theme="light"] .inv-print-hint { color: #9a8070; }
+.inv-print-hint strong { color: var(--rose); font-weight: 500; }
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════ */
+.footer {
+  background: linear-gradient(160deg, #1e1410 0%, #3a2422 100%);
+  color: #f0e8e0; padding: 72px 24px 48px;
+  position: relative; z-index: 1;
+}
+.footer-inner {
+  max-width: 560px; margin: 0 auto; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.footer-heart { font-size: 2rem; color: var(--rose); animation: heartbeat 1.5s ease-in-out infinite; }
+.footer-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 300; color: #f0e8e0; line-height: 1.35;
+}
+.footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #b8a898; font-size: 0.98rem; }
+.footer-names { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 0.2em; color: #c9a86c; margin-top: 8px; }
+.footer-date { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.3em; color: #7a6259; }
+.footer-copy { margin-top: 40px; font-size: 0.72rem; color: #4a3830; font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .profiles-grid { grid-template-columns: 1fr; }
+  .profiles-center { padding: 16px 0; flex-direction: row; justify-content: center; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.tall { grid-row: span 1; }
+  .inv-card-inner { padding: 32px 22px; }
+  .inv-names { font-size: 2rem; gap: 8px; }
+  .inv-details-row { gap: 14px; }
+  .inv-divider-v { height: 40px; }
+  .inv-parents-row { gap: 18px; }
+  .countdown { gap: 8px; }
+  .count-item { padding: 11px 13px; min-width: 60px; }
+  .count-item span { font-size: 2rem; }
+  .name-groom, .name-bride { font-size: clamp(2.8rem, 13vw, 4rem); }
+  .hero-names-stack { gap: 2px; }
+  .wedding-card { padding: 30px 24px; }
+}
+
+@media (max-width: 420px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item.wide { grid-column: span 1; }
+  .name-groom, .name-bride { font-size: 2.8rem; }
+}
