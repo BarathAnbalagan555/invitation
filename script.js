@@ -83,64 +83,6 @@ themeToggle.addEventListener('click', () => {
 const savedTheme = localStorage.getItem('weddingTheme');
 if (savedTheme) html.dataset.theme = savedTheme;
 
-/* ── MUSIC TOGGLE ────────────────────────────────────────────── */
-const musicToggle = document.getElementById('musicToggle');
-let audioCtx = null;
-let musicPlaying = false;
-let musicNodes = [];
-
-function createRomanticTone() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  const notes = [261.63, 329.63, 392.00]; // C4, E4, G4
-  musicNodes = [];
-
-  notes.forEach((freq, i) => {
-    const osc  = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type   = 'sine';
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    gain.gain.setValueAtTime(0, audioCtx.currentTime);
-    gain.gain.linearRampToValueAtTime(0.04 - i * 0.01, audioCtx.currentTime + 1.5);
-
-    const lfo  = audioCtx.createOscillator();
-    const lfoG = audioCtx.createGain();
-    lfo.frequency.value = 5;
-    lfoG.gain.value     = 2;
-    lfo.connect(lfoG);
-    lfoG.connect(osc.frequency);
-    lfo.start();
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start();
-    musicNodes.push({ osc, gain, lfo });
-  });
-}
-
-function stopMusic() {
-  if (!audioCtx) return;
-  musicNodes.forEach(({ osc, gain, lfo }) => {
-    gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
-    setTimeout(() => { try { osc.stop(); lfo.stop(); } catch(e) {} }, 1100);
-  });
-  musicNodes = [];
-}
-
-musicToggle.addEventListener('click', () => {
-  if (musicPlaying) {
-    stopMusic();
-    musicToggle.classList.remove('playing');
-    musicToggle.setAttribute('aria-label', 'Play music');
-  } else {
-    createRomanticTone();
-    musicToggle.classList.add('playing');
-    musicToggle.setAttribute('aria-label', 'Pause music');
-  }
-  musicPlaying = !musicPlaying;
-});
-
 /* ── SAVE AS PDF / PRINT ─────────────────────────────────────── */
 document.getElementById('downloadCard').addEventListener('click', () => {
   // Open the invitation card in a print-optimised new window
